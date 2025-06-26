@@ -5,6 +5,30 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="Alien",class="com.me.Alien>
-</bean>
+    <!--bean id="Alien11" class="com.me.Alien" scope="prototype"-->
+    <bean id="Alien11" class="com.me.Alien" autowire="byName" >
+        <property name="age" value="21"></property>
+        <!-- solution one>
+        <constructor-arg value="22"/>
+        <constructor-arg type="com.me.Laptop" ref="Laptop11"/-->
+
+        <!-- solution two>
+        <constructor-arg index="0" value="22"/>
+        <constructor-arg index="1" ref="Laptop11"/-->
+
+        <!-- solution three-->
+        <constructor-arg name="age" value="22"/>
+        <constructor-arg name="com" ref="Laptop11"/>
+
+        <property name="lap" ref="Laptop11"></property>
+    </bean>
+
+    <bean id="Laptop11" class="com.me.Laptop"></bean>
+
+    <bean id="Alien12" class="com.me.Alien">
+    </bean>
+
+
+
+
 </beans>

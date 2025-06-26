@@ -1,10 +1,19 @@
 package com.me;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alien {
 
+    @Value("32")
     private int age;
-   // private Laptop lap= new Laptop(); -> so if we want to avoid object creation use ref in xml section
-    private Laptop lap;
+    // private Laptop lap= new Laptop(); -> so if we want to avoid object creation use ref in xml section
+    private Desktop lap;
+    @Autowired
+    @Qualifier("laptop") // class name in lowercase
     private Computer com;
 
     public Alien(){
@@ -46,11 +55,11 @@ public class Alien {
         this.com = com;
     }
 
-    public Laptop getLap() {
+   public Desktop getLap() {
         return lap;
     }
 
-    public void setLap(Laptop lap) {
+    public void setLap(Desktop lap) {
         this.lap = lap;
     }
 
@@ -59,6 +68,13 @@ public class Alien {
     public void code(){
 
         System.out.println("ALien coded");
-        lap.compile();
+        com.compile();
     }
+
+    public void setcom(Computer com) {
+
+        this.com = com;
+    }
+
+
 }
